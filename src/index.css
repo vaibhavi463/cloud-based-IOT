@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary-50: #f5f3ff;
+  --color-primary-100: #ede9fe;
+  --color-primary-200: #ddd6fe;
+  --color-primary-300: #c4b5fd;
+  --color-primary-400: #a78bfa;
+  --color-primary-500: #8b5cf6;
+  --color-primary-600: #7c3aed;
+  --color-primary-700: #6d28d9;
+  --color-primary-800: #5b21b6;
+  --color-primary-900: #4c1d95;
+
+  --color-dark-950: #0a0a0f;
+  --color-dark-900: #0f1117;
+  --color-dark-800: #151821;
+  --color-dark-700: #1e2231;
+  --color-dark-600: #282d3e;
+  --color-dark-500: #3a3f52;
+  --color-dark-400: #6b7194;
+  --color-dark-300: #9ca2b8;
+  --color-dark-200: #c5c9d8;
+  --color-dark-100: #e8eaf0;
+
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-info: #3b82f6;
+}
+
+/* ============================
+   BASE STYLES
+   ============================ */
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--color-dark-950);
+  color: var(--color-dark-100);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Background gradient */
+#root {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(139, 92, 246, 0.12), transparent),
+    radial-gradient(ellipse 60% 40% at 80% 50%, rgba(59, 130, 246, 0.06), transparent),
+    var(--color-dark-950);
+}
+
+/* ============================
+   CUSTOM SCROLLBAR
+   ============================ */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-dark-600);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-dark-500);
+}
+
+/* ============================
+   GLASSMORPHISM UTILITIES
+   ============================ */
+.glass {
+  background: var(--glass-bg, rgba(21, 24, 33, 0.6));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.06));
+}
+
+.glass-card {
+  background: var(--card-bg, rgba(21, 24, 33, 0.5));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--card-border, rgba(255, 255, 255, 0.08));
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(139, 92, 246, 0.2);
+  box-shadow: var(--card-hover-shadow, 0 8px 32px rgba(139, 92, 246, 0.08));
+  transform: translateY(-1px);
+}
+
+.glass-subtle {
+  background: var(--glass-subtle-bg, rgba(30, 34, 49, 0.4));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-subtle-border, rgba(255, 255, 255, 0.04));
+}
+
+/* ============================
+   ANIMATIONS
+   ============================ */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(16, 185, 129, 0.4); }
+  50% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.7); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.04) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+/* ============================
+   SCROLLBAR THIN
+   ============================ */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: var(--color-dark-600);
+  border-radius: 999px;
+}
+
+/* ============================
+   TABLE STYLES
+   ============================ */
+.table-row-hover:hover {
+  background: var(--table-row-hover-bg, rgba(139, 92, 246, 0.04));
+}
+
+/* ============================
+   LIGHT THEME OVERRIDES (DAY MODE)
+   ============================ */
+:root.light {
+  /* Override Tailwind theme color variables */
+  --color-dark-950: #f8fafc; /* Slate 50 */
+  --color-dark-900: #ffffff; /* White */
+  --color-dark-800: #f1f5f9; /* Slate 100 */
+  --color-dark-700: #e2e8f0; /* Slate 200 */
+  --color-dark-600: #cbd5e1; /* Slate 300 */
+  --color-dark-500: #94a3b8; /* Slate 400 */
+  --color-dark-400: #64748b; /* Slate 500 */
+  --color-dark-300: #475569; /* Slate 600 */
+  --color-dark-200: #334155; /* Slate 700 */
+  --color-dark-100: #0f172a; /* Slate 900 */
+
+  /* Override glassmorphism card variables */
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(15, 23, 42, 0.08);
+  --card-hover-shadow: 0 10px 30px rgba(139, 92, 246, 0.06);
+  --glass-bg: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(15, 23, 42, 0.06);
+  --glass-subtle-bg: rgba(241, 245, 249, 0.85);
+  --glass-subtle-border: rgba(15, 23, 42, 0.05);
+
+  --table-row-hover-bg: rgba(139, 92, 246, 0.03);
+}
+
+.light #root {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(139, 92, 246, 0.04), transparent),
+    radial-gradient(ellipse 60% 40% at 80% 50%, rgba(59, 130, 246, 0.02), transparent),
+    var(--color-dark-950);
+}
+
+/* ============================
+   INPUT ICON PADDING HELPER
+   ============================ */
+.input-icon-left {
+  padding-left: 2.75rem !important;
+}
+
+.input-icon-right {
+  padding-right: 2.75rem !important;
+}
+
+
